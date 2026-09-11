@@ -6,11 +6,12 @@
 
   /* ---------- language switch (persisted) ---------- */
   var LANG_KEY = 'cw-lang';
+  var LANG_MAP = { zh: 'zh-CN', en: 'en', vi: 'vi' };
   function applyLang(lang) {
     document.documentElement.setAttribute('data-lang', lang);
-    document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
-    document.querySelectorAll('.lang button').forEach(function (b) {
-      b.classList.toggle('is-on', b.dataset.lang === lang);
+    document.documentElement.setAttribute('lang', LANG_MAP[lang] || 'en');
+    document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
+      b.classList.toggle('is-on', b.dataset.langBtn === lang);
     });
     try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
   }
@@ -99,7 +100,8 @@
         setTimeout(function () {
           cap.innerHTML =
             '<span data-zh>' + (cur.dataset.zhCap || '') + '</span>' +
-            '<span data-en>' + (cur.dataset.enCap || '') + '</span>';
+            '<span data-en>' + (cur.dataset.enCap || '') + '</span>' +
+            '<span data-vi>' + (cur.dataset.viCap || '') + '</span>';
           cap.style.opacity = '1';
         }, 380);
       }

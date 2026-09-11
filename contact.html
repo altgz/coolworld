@@ -186,27 +186,31 @@
         <img src="assets/img/banner-cool.jpg" alt="Cool World" class="mt-32" loading="lazy" style="border-radius:var(--radius);box-shadow:var(--shadow)">
       </div>
 
-      <form class="form reveal" data-d="1" data-demo>
+      <form class="form reveal" data-d="1" data-demo method="POST" action="https://formsubmit.co/ajax/535047633@qq.com">
+        <input type="hidden" name="_subject" value="Cool World 网站询价 / Website Enquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_honey" value="">
         <div class="form__grid">
           <div class="field">
             <label data-zh>公司名称</label><label data-en>Company name</label><label data-vi>Tên công ty</label>
-            <input type="text" required placeholder="Company / Co., Ltd.">
+            <input type="text" name="company" required placeholder="Company / Co., Ltd.">
           </div>
           <div class="field">
             <label data-zh>联系人</label><label data-en>Contact person</label><label data-vi>Người liên hệ</label>
-            <input type="text" required placeholder="Name">
+            <input type="text" name="contact" required placeholder="Name">
           </div>
           <div class="field">
             <label data-zh>电子邮箱</label><label data-en>Email</label><label data-vi>Email</label>
-            <input type="email" required placeholder="name@company.com">
+            <input type="email" name="email" required placeholder="name@company.com">
           </div>
           <div class="field">
             <label data-zh>电话 / 微信</label><label data-en>Phone / WeChat</label><label data-vi>Điện thoại / WeChat</label>
-            <input type="text" placeholder="+86 ...">
+            <input type="text" name="phone_wechat" placeholder="+86 ...">
           </div>
           <div class="field">
             <label data-zh>服务类型</label><label data-en>Service type</label><label data-vi>Loại dịch vụ</label>
-            <select>
+            <select name="service_type">
               <option data-zh>海运 — 整柜 FCL</option><option data-zh>海运 — 拼箱 LCL</option>
               <option data-zh>空运</option><option data-zh>FBA 头程 / 海派 / 空派</option>
               <option data-zh>铁路运输</option><option data-zh>仓储 / 报关 / 其他</option>
@@ -220,11 +224,11 @@
           </div>
           <div class="field">
             <label data-zh>起运地 → 目的地</label><label data-en>Origin → Destination</label><label data-vi>Nơi xuất phát → Điểm đến</label>
-            <input type="text" placeholder="Xiamen → Los Angeles">
+            <input type="text" name="route" placeholder="Xiamen → Los Angeles">
           </div>
           <div class="field field--full">
             <label data-zh>货物信息（品类 / 件数 / 毛重 / 尺寸）</label><label data-en>Cargo details (commodity / pcs / gross weight / dimensions)</label><label data-vi>Thông tin hàng hóa (loại hàng / số kiện / trọng lượng / kích thước)</label>
-            <textarea placeholder="Commodity, packages, weight, volume, readiness date..."></textarea>
+            <textarea name="cargo_details" placeholder="Commodity, packages, weight, volume, readiness date..."></textarea>
           </div>
           <div class="field field--full" style="align-items:flex-end;gap:14px">
             <button class="btn btn--primary btn--lg" type="submit">
@@ -299,13 +303,14 @@
       <table class="office-tooltip__table">
         <thead>
           <tr>
-            <th>名字</th>
-            <th>职位</th>
-            <th>联系</th>
-            <th>邮箱</th>
-            <th>微信</th>
-            <th>座机电话</th>
-            <th>QQ</th>
+            <th><span data-zh>照片</span><span data-en>Photo</span><span data-vi>Ảnh</span></th>
+            <th><span data-zh>名字</span><span data-en>Name</span><span data-vi>Tên</span></th>
+            <th><span data-zh>职位</span><span data-en>Title</span><span data-vi>Chức vụ</span></th>
+            <th><span data-zh>联系</span><span data-en>Phone</span><span data-vi>Liên hệ</span></th>
+            <th><span data-zh>邮箱</span><span data-en>Email</span><span data-vi>Email</span></th>
+            <th><span data-zh>微信</span><span data-en>WeChat</span><span data-vi>WeChat</span></th>
+            <th><span data-zh>座机电话</span><span data-en>Tel</span><span data-vi>Điện thoại</span></th>
+            <th><span data-zh>QQ</span><span data-en>QQ</span><span data-vi>QQ</span></th>
           </tr>
         </thead>
         <tbody id="officeTooltipBody"></tbody>

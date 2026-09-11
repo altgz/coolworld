@@ -69,11 +69,30 @@
     f.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var ok = f.querySelector('.form__ok');
-      if (ok) {
-        ok.hidden = false;
-        ok.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-      }
-      f.reset();
+      var lang = document.documentElement.getAttribute('data-lang') || 'zh';
+      var errText = lang === 'en' ? 'Submission failed. Please try again later.' : lang === 'vi' ? 'Gửi thất bại. Vui lòng thử lại sau.' : '提交失败，请稍后重试。';
+      var done = function () {
+        if (ok) {
+          ok.hidden = false;
+          ok.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+        f.reset();
+      };
+      var action = f.getAttribute('action') || '';
+      if (action.indexOf('formsubmit.co') === -1) { done(); return; }
+      var data = {};
+      new FormData(f).forEach(function (v, k) { if (k !== '_honey') data[k] = v; });
+      fetch(action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && (d.success === 'true' || d.success === true)) { done(); }
+          else { alert(errText); }
+        })
+        .catch(function () { alert(errText); });
     });
   });
 
@@ -146,46 +165,51 @@
     xiamen: {
       zh: '酷界（厦门）国际物流有限公司',
       en: 'COOL WORLD (XIAMEN) LOGISTICS INTERNATIONAL CO LTD',
+      vi: 'Cool World (Xiamen) International Logistics Co., Ltd.',
       staff: [
-        { name:'Bob Wu', title:'总经理',   phone:'+86 13058184999', email:'bob.wu@coolworldcn.com',         wechat:'bob_tyrone', tel:'+86 592 5639968', qq:'2300687944' },
-        { name:'Kathy Zhang', title:'副总经理', phone:'+86 13606928663', email:'kathy.zhang@coolworldcn.com', wechat:'13606928663', tel:'+86 592 5639568', qq:'1542195492' },
-        { name:'Jane Luo', title:'人力资源总监', phone:'+86 18106088909', email:'jane.luo@coolworldcn.com',     wechat:'18106088909', tel:'+86 592 5772527', qq:'1247089857' },
-        { name:'Duke Huang', title:'公司经理', phone:'+86 15960619043', email:'duke.huang@coolworldcn.com',   wechat:'15960619043', tel:'+86 592 5772511', qq:'191201578' },
-        { name:'Grace Zhang', title:'海外市场经理', phone:'+86 19906043621', email:'grace.zhang@coolworldcn.com', wechat:'19906043621', tel:'+86 592 5772511', qq:'2445645578' },
-        { name:'Lily Xie', title:'海外业务专员', phone:'+86 17720995595', email:'biz01.xm@coolworldcn.com',     wechat:'17720995595', tel:'+86 592 5772511', qq:'1943464048' }
+        { name:'Bob Wu', photo:'assets/staff/Bob Wu.png', title:'总经理', titleEn:'General Manager', titleVi:'Tổng giám đốc', phone:'+86 13058184999', email:'bob.wu@coolworldcn.com',         wechat:'bob_tyrone', tel:'+86 592 5639968', qq:'2300687944' },
+        { name:'Kathy Zhang', photo:'assets/staff/Kathy Zhang.png', title:'副总经理', titleEn:'Deputy General Manager', titleVi:'Phó tổng giám đốc', phone:'+86 13606928663', email:'kathy.zhang@coolworldcn.com', wechat:'13606928663', tel:'+86 592 5639568', qq:'1542195492' },
+        { name:'Jane Luo', photo:'assets/staff/Jane Luo.png', title:'人力资源总监', titleEn:'HR Director', titleVi:'Giám đốc nhân sự', phone:'+86 18106088909', email:'jane.luo@coolworldcn.com',     wechat:'18106088909', tel:'+86 592 5772527', qq:'1247089857' },
+        { name:'Duke Huang', photo:'assets/staff/Duke Huang.png', title:'公司经理', titleEn:'Manager', titleVi:'Giám đốc công ty', phone:'+86 15960619043', email:'duke.huang@coolworldcn.com',   wechat:'15960619043', tel:'+86 592 5772511', qq:'191201578' },
+        { name:'Grace Zhang', photo:'assets/staff/Grace Zhang.png', title:'海外市场经理', titleEn:'Overseas Marketing Manager', titleVi:'Giám đốc thị trường hải ngoại', phone:'+86 19906043621', email:'grace.zhang@coolworldcn.com', wechat:'19906043621', tel:'+86 592 5772511', qq:'2445645578' },
+        { name:'Lily Xie', photo:'assets/staff/Lily Xie.jpg', title:'海外业务专员', titleEn:'Overseas Business Specialist', titleVi:'Chuyên viên kinh doanh hải ngoại', phone:'+86 17720995595', email:'biz01.xm@coolworldcn.com',     wechat:'17720995595', tel:'+86 592 5772511', qq:'1943464048' }
       ]
     },
     guangzhou: {
       zh: '酷界（广州）国际物流有限公司',
       en: 'COOL WORLD (GUANGZHOU) LOGISTICS INTERNATIONAL CO LTD',
+      vi: 'Cool World (Guangzhou) International Logistics Co., Ltd.',
       staff: [
-        { name:'Shirley Ye', title:'总经理',   phone:'+86 18924153132', email:'shirley.yeh@coolworldcn.com', wechat:'Juan583166134',   tel:'020-83720206', qq:'1074288341' },
-        { name:'Tim Lin',   title:'销售经理', phone:'+86 19068099365', email:'tim.lin@coolworldcn.com',     wechat:'timlin0228113657', tel:'020-83720206', qq:'3813755484' }
+        { name:'Shirley Ye', photo:'assets/staff/Shirley Ye.png', title:'总经理', titleEn:'General Manager', titleVi:'Tổng giám đốc', phone:'+86 18924153132', email:'shirley.yeh@coolworldcn.com', wechat:'Juan583166134',   tel:'020-83720206', qq:'1074288341' },
+        { name:'Tim Lin',   photo:'assets/staff/Tim Lin.jpg', title:'销售经理', titleEn:'Sales Manager', titleVi:'Quản lý bán hàng', phone:'+86 19068099365', email:'tim.lin@coolworldcn.com',     wechat:'timlin0228113657', tel:'020-83720206', qq:'3813755484' }
       ]
     },
     shenzhen: {
       zh: '酷界速运（深圳）有限公司',
       en: 'COOL WORLD (SHENZHEN) EXPRESS CO LTD',
+      vi: 'Cool World Express (Shenzhen) Co., Ltd.',
       staff: [
-        { name:'Klaus Wang', title:'总经理',   phone:'+86 13113874333', email:'klaus.wang@coolworldcn.com',  wechat:'TQ995990717',   tel:'+86 755 82281167', qq:'1773176512' },
-        { name:'Sharon Wang', title:'副总经理', phone:'+86 15815522452', email:'sharon.wang@coolworldcn.com', wechat:'sharonwangxiaona', tel:'+86 755 82281167', qq:'153345268' }
+        { name:'Klaus Wang', photo:'assets/staff/Klaus Wang.png', title:'总经理', titleEn:'General Manager', titleVi:'Tổng giám đốc', phone:'+86 13113874333', email:'klaus.wang@coolworldcn.com',  wechat:'TQ995990717',   tel:'+86 755 82281167', qq:'1773176512' },
+        { name:'Sharon Wang', photo:'assets/staff/Sharon Wang.jpg', title:'副总经理', titleEn:'Deputy General Manager', titleVi:'Phó tổng giám đốc', phone:'+86 15815522452', email:'sharon.wang@coolworldcn.com', wechat:'sharonwangxiaona', tel:'+86 755 82281167', qq:'153345268' }
       ]
     },
     vietnam: {
       zh: '酷界国际物流（越南）有限公司',
       en: 'COOL WORLD LOGISTICS VIETNAM CO LTD',
+      vi: 'Cool World Logistics Vietnam Co., Ltd.',
       staff: [
-        { name:'Bob Wu',    title:'总经理',   phone:'+84 768941949',   email:'bob.wu@coolworldcn.com',       wechat:'bob_tyrone',   tel:'+84 768941949',   qq:'2300687944' },
-        { name:'Dicy Chen', title:'商务经理', phone:'+84 367052308',   email:'dicy.chen@coolworlddon.com',   wechat:'CHXD2234',     tel:'+84 367052308',   qq:'' },
-        { name:'Pier Wu',   title:'海外部经理', phone:'+84 768941949', email:'pier.wu@coolworldcn.com',      wechat:'+852 91861358', tel:'+84 2871076168', qq:'' },
-        { name:'Sean Zhang', title:'业务经理', phone:'+86 13842670726', email:'sales01@coolworldvn.com',      wechat:'18242070238',   tel:'+84 367052308',   qq:'' }
+        { name:'Bob Wu',    photo:'assets/staff/Bob Wu.png', title:'总经理', titleEn:'General Manager', titleVi:'Tổng giám đốc', phone:'+84 768941949',   email:'bob.wu@coolworldcn.com',       wechat:'bob_tyrone',   tel:'+84 768941949',   qq:'2300687944' },
+        { name:'Dicy Chen', photo:'assets/staff/Dicy Chen.png', title:'商务经理', titleEn:'Business Manager', titleVi:'Quản lý kinh doanh', phone:'+84 367052308',   email:'dicy.chen@coolworlddon.com',   wechat:'CHXD2234',     tel:'+84 367052308',   qq:'' },
+        { name:'Pier Wu',   photo:'assets/staff/Pier Wu.png', title:'海外部经理', titleEn:'Overseas Dept. Manager', titleVi:'Quản lý bộ phận hải ngoại', phone:'+84 768941949', email:'pier.wu@coolworldcn.com',      wechat:'+852 91861358', tel:'+84 2871076168', qq:'' },
+        { name:'Sean Zhang', photo:'assets/staff/Sean Zhang.jpg', fit:'contain', title:'业务经理', titleEn:'Business Manager', titleVi:'Quản lý kinh doanh', phone:'+86 13842670726', email:'sales01@coolworldvn.com',      wechat:'18242070238',   tel:'+84 367052308',   qq:'' }
       ]
     },
     malaysia: {
       zh: 'COOL WORLD (M) SDN.BHD',
       en: 'COOL WORLD (M) SDN.BHD',
+      vi: 'COOL WORLD (M) SDN.BHD',
       staff: [
-        { name:'Calvin Chia', title:'总经理', phone:'+60 111 256 4767', email:'calvin@coolworldcn.com', wechat:'CalvinChiawg', tel:'', qq:'' }
+        { name:'Calvin Chia', photo:'assets/staff/Calvin Chia.jpg', title:'总经理', titleEn:'General Manager', titleVi:'Tổng giám đốc', phone:'+60 111 256 4767', email:'calvin@coolworldcn.com', wechat:'CalvinChiawg', tel:'', qq:'' }
       ]
     }
   };
@@ -198,17 +222,28 @@
     var hideTimer = null;
     var currentKey = null;
 
+    function staffTitle(s) {
+      var lang = document.documentElement.getAttribute('data-lang') || 'zh';
+      if (lang === 'en') return s.titleEn || s.title;
+      if (lang === 'vi') return s.titleVi || s.titleEn || s.title;
+      return s.title;
+    }
+
     function renderRows(staff) {
+      var lang = document.documentElement.getAttribute('data-lang') || 'zh';
+      var emptyText = lang === 'en' ? 'No contacts yet' : lang === 'vi' ? 'Chưa có thông tin liên hệ' : '暂无联系人信息';
       if (!staff || !staff.length) {
-        bodyEl.innerHTML = '<tr><td colspan="7" class="office-tooltip__empty">暂无联系人信息</td></tr>';
+        bodyEl.innerHTML = '<tr><td colspan="8" class="office-tooltip__empty">' + emptyText + '</td></tr>';
         return;
       }
       bodyEl.innerHTML = staff.map(function (s) {
         var phoneCell = s.phone ? '<a href="tel:' + s.phone.replace(/\s+/g,'') + '">' + s.phone + '</a>' : '';
         var emailCell = s.email ? '<a href="mailto:' + s.email + '">' + s.email + '</a>' : '';
+        var photoCell = s.photo ? '<img class="office-tooltip__avatar' + (s.fit === 'contain' ? ' office-tooltip__avatar--contain' : '') + '" src="' + s.photo + '" alt="' + (s.name || '') + '">' : '';
         return '<tr>' +
+          '<td class="office-tooltip__photo">' + photoCell + '</td>' +
           '<td>' + (s.name || '') + '</td>' +
-          '<td>' + (s.title || '') + '</td>' +
+          '<td>' + (staffTitle(s) || '') + '</td>' +
           '<td>' + phoneCell + '</td>' +
           '<td>' + emailCell + '</td>' +
           '<td>' + (s.wechat || '') + '</td>' +
@@ -241,8 +276,12 @@
       var data = OFFICE_STAFF[officeKey];
       if (!data) return;
       currentKey = officeKey;
-      titleEl.textContent = data.zh || '';
-      subEl.textContent = data.en || '';
+      var lang = document.documentElement.getAttribute('data-lang') || 'zh';
+      var heading = lang === 'en' ? (data.en || data.zh) : lang === 'vi' ? (data.vi || data.en || data.zh) : data.zh;
+      var subtitle = lang === 'zh' ? (data.en || '') : (heading !== data.en ? (data.en || '') : '');
+      titleEl.textContent = heading || '';
+      subEl.textContent = subtitle;
+      subEl.style.display = subtitle ? '' : 'none';
       renderRows(data.staff);
       tooltip.classList.add('is-visible');
       tooltip.setAttribute('aria-hidden', 'false');

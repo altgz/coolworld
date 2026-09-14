@@ -71,9 +71,19 @@
   </div></div>
 </div>
 
-<section class="section news-detail">
+<section class="pagehero">
+  <div class="pagehero__bg"><img src="assets/img/banner-cool.jpg" alt="" fetchpriority="high"></div>
   <div class="wrap">
     <nav class="breadcrumb"><a href="index.html" data-zh>首页</a><a href="index.html" data-en>Home</a><a href="index.html" data-vi>Trang chủ</a><span>/</span><a href="news.html" data-zh>新闻资讯</a><a href="news.html" data-en>News</a><a href="news.html" data-vi>Tin tức</a><span>/</span><span data-zh>详情</span><span data-en>Detail</span><span data-vi>Chi tiết</span></nav>
+    <h1 class="h1"><span data-zh>新闻资讯</span><span data-en>News &amp; Updates</span><span data-vi>Tin tức &amp; Cập nhật</span></h1>
+    <p class="lead" data-zh>记录酷界国际成长的每一步：团队活动、企业庆典与行业交流。</p>
+    <p class="lead" data-en>Every step of Cool World's growth — team events, celebrations and industry exchange.</p>
+    <p class="lead" data-vi>Ghi lại từng bước trưởng thành của Cool World International: hoạt động đội ngũ, lễ kỷ niệm doanh nghiệp và giao lưu ngành.</p>
+  </div>
+</section>
+
+<section class="section news-detail">
+  <div class="wrap">
     <h1 class="news-detail__title" data-zh></h1>
     <h1 class="news-detail__title" data-en></h1>
     <h1 class="news-detail__title" data-vi></h1>
@@ -143,18 +153,18 @@
 <script>
 (function(){
   var NEWS=[
-    {id:1, zh:'酷界五周年团建活动', en:"Cool World 5th Anniversary Team Building", vi:'Hoạt động xây dựng đội ngũ nhân kỷ niệm 5 năm Cool World', date:'2025-04', img:'assets/news/n1.jpg'},
-    {id:2, zh:'致身边的每一个"她" — 女神节活动', en:'To Every "Her" Around Us — Women\'s Day', vi:'Gửi "Cô ấy" xung quanh chúng ta — Ngày Quốc tế Phụ nữ', date:'2025-03-09', img:'assets/news/n2.jpg'},
-    {id:3, zh:'酷界国际尾牙晚宴：感恩同行，再启征程', en:'Annual Dinner: Grateful for the Journey, On to the Next', vi:'Tiệc cuối năm Cool World International: Tri ân đồng hành, khởi đầu hành trình mới', date:'2025-01-20', img:'assets/news/n3.jpg'},
-    {id:4, zh:'致身边的每一个"她"', en:'To Every "Her" Around Us', vi:'Gửi đến mỗi "Cô ấy" xung quanh chúng ta', date:'2025-01-02', img:'assets/news/n4.jpg'},
+    {id:1, zh:'酷界五周年团建活动', en:"Cool World 5th Anniversary Team Building", vi:'Hoạt động xây dựng đội ngũ nhân kỷ niệm 5 năm Cool World', date:'2025-09-11', img:'assets/news/n1.jpg'},
+    {id:2, zh:'致身边的每一个"她"—女神节活动', en:'To Every "Her" Around Us — Women\'s Day', vi:'Gửi "Cô ấy" xung quanh chúng ta — Ngày Quốc tế Phụ nữ', date:'2025-03-10', img:'assets/news/n2.jpg'},
+    {id:3, zh:'酷界国际尾牙晚宴:感恩同行，再启征程', en:'Annual Dinner: Grateful for the Journey, On to the Next', vi:'Tiệc cuối năm Cool World International: Tri ân đồng hành, khởi đầu hành trình mới', date:'2025-01-20', img:'assets/news/n3.jpg'},
+    {id:4, zh:'跨年盛宴,元旦狂欢party', en:'New Year Feast & Party', vi:'Tiệc cuối năm và tiệc mừng năm mới', date:'2025-01-02', img:'assets/news/n4.jpg'},
     {id:5, zh:'酷界国际举办圣诞庆祝活动，共享节日温情', en:'Christmas Celebration at Cool World', vi:'Cool World International tổ chức lễ kỷ niệm Giáng sinh, chia sẻ sự ấm áp ngày lễ', date:'2024-12-26', img:'assets/news/n5.jpg'},
-    {id:6, zh:'JCTRANS 企业家俱乐部厦门口岸正式成立', en:'JCTRANS Entrepreneurs Club Launched in Xiamen', vi:'Câu lạc bộ Doanh nhân JCTRANS chính thức thành lập tại cửa khẩu Cửa Môn', date:'2024-08-10', img:'assets/news/n6.jpg'},
-    {id:7, zh:'庆祝酷界国际 4 周岁生日快乐！', en:'Happy 4th Anniversary, Cool World!', vi:'Chúc mừng sinh nhật lần thứ 4 của Cool World International!', date:'2024-04-02', img:'assets/news/n7.jpg'},
-    {id:8, zh:'酷界国际女神节活动', en:"Cool World Women's Day Celebration", vi:'Hoạt động Ngày Phụ nữ của Cool World', date:'2024-03-09', img:'assets/news/n8.jpg'},
-    {id:9, zh:'庆祝酷界速运 3 周岁生日快乐！', en:'Happy 3rd Anniversary, Cool World Express!', vi:'Chúc mừng sinh nhật lần thứ 3 của Cool World Express!', date:'2023-04-02', img:'assets/news/n9.jpg'},
-    {id:10, zh:'东山团建两日游', en:'Dongshan Two-day Team Trip', vi:'Chuyến đi xây dựng đội ngũ 2 ngày tại Đông Sơn', date:'2023', img:'assets/news/n10.png'},
-    {id:11, zh:'庆祝酷界速运 2 周岁生日快乐！', en:'Happy 2nd Anniversary, Cool World Express!', vi:'Chúc mừng sinh nhật lần thứ 2 của Cool World Express!', date:'2022-04-02', img:'assets/news/n11.jpg'},
-    {id:12, zh:'两周年晚会', en:'2nd Anniversary Gala', vi:'Đêm kỷ niệm 2 năm thành lập', date:'2022', img:'assets/news/n12.png'}
+    {id:6, zh:'JCTRANS企业家俱乐部厦门口岸正式成立', en:'JCTRANS Entrepreneurs Club Launched in Xiamen', vi:'Câu lạc bộ Doanh nhân JCTRANS chính thức thành lập tại cửa khẩu Cửa Môn', date:'2024-08-10', img:'assets/news/n6.jpg'},
+    {id:7, zh:'庆祝酷界国际4周岁生日快乐!', en:'Happy 4th Anniversary, Cool World!', vi:'Chúc mừng sinh nhật lần thứ 4 của Cool World International!', date:'2024-04-02', img:'assets/news/n7.jpg'},
+    {id:8, zh:'致身边的每一个"她"', en:'To Every "Her" Around Us', vi:'Gửi "Cô ấy" xung quanh chúng ta', date:'2024-03-09', img:'assets/news/n8.jpg'},
+    {id:9, zh:'庆祝酷界速运3周岁生日快乐!', en:'Happy 3rd Anniversary, Cool World Express!', vi:'Chúc mừng sinh nhật lần thứ 3 của Cool World Express!', date:'2023-04-02', img:'assets/news/n9.jpg'},
+    {id:10, zh:'东山团建两日游', en:'Dongshan Two-day Team Trip', vi:'Chuyến đi xây dựng đội ngũ 2 ngày tại Đông Sơn', date:'2022-07-18', img:'assets/news/n10.png'},
+    {id:11, zh:'庆祝酷界速运2周岁生日快乐!', en:'Happy 2nd Anniversary, Cool World Express!', vi:'Chúc mừng sinh nhật lần thứ 2 của Cool World Express!', date:'2022-04-02', img:'assets/news/n11.jpg'},
+    {id:12, zh:'两周年晚会', en:'2nd Anniversary Gala', vi:'Đêm kỷ niệm 2 năm thành lập', date:'2022-04-02', img:'assets/news/n12.png'}
   ];
   var params=new URLSearchParams(location.search);
   var id=parseInt(params.get('id'),10)||1;

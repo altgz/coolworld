@@ -13,6 +13,10 @@
     document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
       b.classList.toggle('is-on', b.dataset.langBtn === lang);
     });
+    document.querySelectorAll('select option[data-z]').forEach(function (o) {
+      var t = o.getAttribute('data-' + lang.charAt(0));
+      if (t) o.textContent = t;
+    });
     try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
   }
   document.querySelectorAll('[data-lang-btn]').forEach(function (b) {

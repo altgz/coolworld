@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
    COOL WORLD INTERNATIONAL — site behaviour
    ========================================================= */
 (function () {
@@ -18,6 +18,7 @@
       if (t) o.textContent = t;
     });
     try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
   }
   document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
     b.addEventListener('click', function () { applyLang(b.dataset.langBtn); });

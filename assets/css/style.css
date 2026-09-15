@@ -530,6 +530,16 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
 }
 
 .nav-drop{position:relative;display:inline-flex;align-items:center}
+.nav-drop .nav__item--nolink{
+  display:inline-flex;align-items:center;gap:6px;cursor:default;
+  color:var(--ink);font-weight:650;text-decoration:none;
+  padding:6px 0;
+}
+.nav-drop .nav__item--nolink::after{
+  content:"";width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;
+  opacity:.7;transition:transform .25s;
+}
+.nav-drop:hover .nav__item--nolink::after{transform:rotate(180deg);opacity:1}
 .nav-drop__menu{
   position:absolute;top:100%;left:0;min-width:200px;background:#fff;
   border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 40px -12px rgba(10,37,64,.20);

@@ -703,6 +703,14 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
   transition:transform .25s,background .25s;
 }
 .cp-closing__contact-row .btn--accent:hover{background:#9A060F;transform:scale(1.04)}
+.cp-closing__dl{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+  color:#fff;font-size:clamp(10.5px,1.2vw,14px);font-weight:800;letter-spacing:.12em;
+  padding:clamp(10px,1.2vw,14px) clamp(12px,1.4vw,18px);border-radius:24px;
+  text-decoration:none;transition:background .25s,border-color .25s,transform .25s;
+}
+.cp-closing__dl:hover{background:rgba(255,255,255,.22);border-color:#fff;transform:scale(1.04)}
 .cp-closing__hq{display:flex;flex-direction:column;gap:2px;text-align:left}
 .cp-closing__hq-label{font-size:clamp(9px,1vw,12px);font-weight:700;color:#8AA0BC;letter-spacing:.1em}
 .cp-closing__hq-tel{font-size:clamp(16px,2vw,26px);font-weight:900;color:#fff;text-decoration:none;letter-spacing:.01em;transition:color .25s}

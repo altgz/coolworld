@@ -857,12 +857,11 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
   transition:transform .28s,box-shadow .28s;cursor:pointer;
 }
 .cp-gn-banner:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(0,36,84,.55)}
-.cp-gn-banner::after{
-  content:"";position:absolute;right:0;top:0;bottom:0;width:clamp(200px,26vw,380px);
-  background-image:url('assets/company-profile/image5.jpeg');background-size:cover;background-position:center;
-  opacity:.18;mask-image:linear-gradient(to right, transparent, #001532 35%);
-  -webkit-mask-image:linear-gradient(to right, transparent, #001532 35%);
-  pointer-events:none;
+.cp-gn-banner__img{
+  position:absolute;right:0;top:0;bottom:0;height:100%;width:clamp(200px,26vw,380px);
+  object-fit:cover;opacity:.25;border-radius:0;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, #001532 45%);
+  mask-image:linear-gradient(to right, transparent 0%, #001532 45%);
 }
 .cp-gn-banner__tag{
   position:absolute;top:clamp(14px,1.6vw,18px);left:clamp(18px,2vw,26px);
@@ -878,7 +877,7 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
   .cp-gn-columns{grid-template-columns:1fr}
   .cp-gn-banner__row{grid-template-columns:1fr}
   .cp-gn-banner__item{padding-right:0}
-  .cp-gn-banner::after{width:45%}
+  .cp-gn-banner__img{width:50%;opacity:.3}
 }
 
 @media(max-width:768px){

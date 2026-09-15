@@ -678,7 +678,7 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
 .cp-closing__logo img{height:clamp(22px,2.6vw,34px);opacity:.65;filter:brightness(0) invert(1)}
 .cp-closing__talk{
   display:inline-block;background:#FF6A70;color:#fff;font-size:clamp(10px,1.1vw,13px);font-weight:800;
-  letter-spacing:.18em;padding:6px 14px;border-radius:20px;transition:transform .25s,background .25s;cursor:pointer;
+  letter-spacing:.18em;padding:6px 14px;border-radius:20px;transition:transform .25s,background .25s;cursor:pointer;text-decoration:none;
 }
 .cp-closing__talk:hover{transform:scale(1.05);background:#CC0A14}
 .cp-closing__inner{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:0 clamp(16px,2vw,24px);text-align:center}

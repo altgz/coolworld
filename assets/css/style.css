@@ -669,18 +669,50 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
 .cp-hero__foot-phone{font-size:clamp(14px,1.6vw,18px);font-weight:700;color:#fff;letter-spacing:.04em}
 
 .cp-closing{
-  position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;
-  color:#fff;overflow:hidden;text-align:center;
+  position:relative;background:linear-gradient(135deg,#002454 0%,#001433 100%);color:#fff;
+  padding:clamp(36px,5vw,56px) 0;overflow:hidden;
 }
-.cp-closing__bg{position:absolute;inset:0;z-index:0}
+.cp-closing__bg{position:absolute;inset:0;z-index:0;opacity:.35}
 .cp-closing__bg img{width:100%;height:100%;object-fit:cover}
-.cp-closing__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,26,47,.85) 0%,rgba(6,26,47,.95) 100%)}
-.cp-closing__inner{position:relative;z-index:2;max-width:680px;padding:0 24px}
-.cp-closing__title{font-size:clamp(28px,5vw,48px);font-weight:900;margin-bottom:12px}
-.cp-closing__sub{font-size:clamp(16px,2.5vw,22px);font-weight:600;color:#DCEAF6;margin-bottom:28px}
+.cp-closing__head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;margin-bottom:clamp(18px,2.2vw,28px);padding:0 clamp(16px,2vw,24px);max-width:1200px;margin-left:auto;margin-right:auto}
+.cp-closing__logo img{height:clamp(22px,2.6vw,34px);opacity:.65;filter:brightness(0) invert(1)}
+.cp-closing__talk{
+  display:inline-block;background:#FF6A70;color:#fff;font-size:clamp(10px,1.1vw,13px);font-weight:800;
+  letter-spacing:.18em;padding:6px 14px;border-radius:20px;transition:transform .25s,background .25s;cursor:pointer;
+}
+.cp-closing__talk:hover{transform:scale(1.05);background:#CC0A14}
+.cp-closing__inner{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:0 clamp(16px,2vw,24px);text-align:center}
+.cp-closing__title{font-size:clamp(26px,4.5vw,52px);font-weight:900;letter-spacing:.02em;line-height:1.1;margin-bottom:clamp(10px,1.4vw,16px)}
+.cp-closing__sub{font-size:clamp(13px,1.6vw,20px);font-weight:600;color:#C0D8F0;margin-bottom:clamp(14px,1.8vw,22px)}
+.cp-closing__desc{font-size:clamp(11px,1.25vw,15px);font-weight:500;color:#8BB3DA;max-width:560px;margin:0 auto clamp(22px,2.8vw,32px);line-height:1.7}
+.cp-closing__contact-row{display:flex;justify-content:center;align-items:center;gap:clamp(14px,1.8vw,22px);flex-wrap:wrap}
+.cp-closing__contact-row .btn--accent{
+  background:#CC0A14;border-color:#CC0A14;color:#fff;
+  font-size:clamp(10.5px,1.2vw,14px);font-weight:800;letter-spacing:.14em;
+  padding:clamp(10px,1.2vw,14px) clamp(14px,1.6vw,22px);border-radius:24px;
+  transition:transform .25s,background .25s;
+}
+.cp-closing__contact-row .btn--accent:hover{background:#9A060F;transform:scale(1.04)}
+.cp-closing__hq{display:flex;flex-direction:column;gap:2px;text-align:left}
+.cp-closing__hq-label{font-size:clamp(9px,1vw,12px);font-weight:700;color:#8AA0BC;letter-spacing:.1em}
+.cp-closing__hq-tel{font-size:clamp(16px,2vw,26px);font-weight:900;color:#fff;text-decoration:none;letter-spacing:.01em;transition:color .25s}
+.cp-closing__hq-tel:hover{color:#FF6A70}
+.cp-closing__foot{
+  position:relative;z-index:2;display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(14px,1.8vw,22px);
+  margin-top:clamp(32px,4vw,48px);padding-top:clamp(18px,2.2vw,26px);border-top:1px solid rgba(255,255,255,.12);
+  align-items:center;max-width:1200px;margin-left:auto;margin-right:auto;padding-left:clamp(16px,2vw,24px);padding-right:clamp(16px,2vw,24px);
+}
+.cp-closing__foot-left{font-size:clamp(9.5px,1.05vw,12px);font-weight:700;color:#8BB3DA;letter-spacing:.12em;line-height:1.4}
+.cp-closing__foot-center img{height:clamp(20px,2.4vw,28px);opacity:.55;filter:brightness(0) invert(1)}
+.cp-closing__foot-right{text-align:right}
+.cp-closing__foot-company{font-size:clamp(9.5px,1.05vw,12.5px);font-weight:800;color:#8BB3DA;letter-spacing:.06em}
+.cp-closing__foot-thanks{font-size:clamp(11px,1.2vw,15px);font-weight:700;color:#fff;margin-top:4px;letter-spacing:.04em}
 
-.cp-foot-logo{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;opacity:.5}
-.cp-foot-logo img{height:36px}
+@media(max-width:768px){
+  .cp-closing__foot{grid-template-columns:1fr;text-align:center}
+  .cp-closing__foot-center{order:-1}
+  .cp-closing__foot-right{text-align:center}
+}
 
 @media(max-width:768px){
   .cp-stats{grid-template-columns:1fr}

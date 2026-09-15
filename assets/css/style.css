@@ -644,7 +644,7 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
 .cp-hero__tagline span{display:block}
 .cp-hero__main{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:clamp(80px,14vw,180px) clamp(20px,4vw,48px) clamp(120px,10vw,160px);width:100%}
 .cp-hero__pill{
-  display:inline-block;background:var(--orange);color:#fff;
+  display:inline-block;background:#CC0A14;color:#fff;
   padding:10px clamp(14px,2vw,24px);border-radius:4px;
   font-size:clamp(11px,1.5vw,14px);font-weight:800;letter-spacing:.1em;
   text-transform:uppercase;margin-bottom:clamp(14px,2.5vw,28px);
@@ -708,7 +708,13 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
 .cp-ov-card{
   background:#fff;border-radius:12px;padding:clamp(14px,1.8vw,22px) clamp(14px,1.6vw,18px);
   box-shadow:0 4px 14px rgba(0,36,84,.1);border:1px solid #D8E4F2;position:relative;
+  transition:background .25s,color .25s,border-color .25s,transform .25s;cursor:pointer;
 }
+.cp-ov-card:hover:not(.cp-ov-card--dark){background:#002454;border-color:#002454;transform:translateY(-2px)}
+.cp-ov-card:hover:not(.cp-ov-card--dark) .cp-ov-card__num,
+.cp-ov-card:hover:not(.cp-ov-card--dark) .cp-ov-card__title{color:#fff}
+.cp-ov-card:hover:not(.cp-ov-card--dark) .cp-ov-card__sub{color:#8BB3DA}
+.cp-ov-card:hover:not(.cp-ov-card--dark) .cp-ov-card__icon svg{stroke:#fff}
 .cp-ov-card--dark{background:#002454;border-color:#002454}
 .cp-ov-card__icon{margin-bottom:clamp(6px,1vw,10px)}
 .cp-ov-card__icon svg{width:clamp(28px,3.5vw,42px);height:clamp(28px,3.5vw,42px)}

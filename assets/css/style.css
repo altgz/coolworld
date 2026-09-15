@@ -531,9 +531,13 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
 
 .nav-drop{position:relative;display:inline-flex;align-items:center}
 .nav-drop .nav__item--nolink{
-  display:inline-flex;align-items:center;gap:6px;cursor:default;
-  color:var(--ink);font-weight:650;text-decoration:none;
-  padding:6px 0;
+  position:relative;display:inline-flex;align-items:center;gap:6px;cursor:default;
+  color:var(--ink);font-weight:650;font-size:15px;text-decoration:none;
+  padding:10px 15px;border-radius:9px;
+}
+.nav-drop .nav__item--nolink.is-active{color:var(--blue)}
+.nav-drop .nav__item--nolink.is-active::before{
+  content:"";position:absolute;left:15px;right:15px;bottom:5px;height:2px;border-radius:2px;background:var(--orange);
 }
 .nav-drop .nav__item--nolink::after{
   content:"";width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor;
@@ -555,6 +559,7 @@ html[data-lang="vi"] .qcard b [data-vi]{display:inline}
 
 .mnav__sub{padding-left:20px}
 .mnav__sub a{font-size:16px !important;color:rgba(255,255,255,.7) !important;border-bottom-color:rgba(255,255,255,.06) !important}
+.mnav .nav__item--nolink{display:block;padding:15px 4px;font-size:19px;font-weight:650;color:#fff;border-bottom:1px solid rgba(255,255,255,.11);cursor:default}
 
 .cp-slide{
   position:relative;overflow:hidden;

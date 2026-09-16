@@ -328,4 +328,9 @@
       card.addEventListener('blur', scheduleHide);
     });
   }
+
+  var track = document.querySelector('.news-marquee__track');
+  if (track) {
+    track.innerHTML += track.innerHTML;
+  }
 })();
